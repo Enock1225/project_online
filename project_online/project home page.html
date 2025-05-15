@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Meal Delivery Management Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #6ee7b7, #3b82f6);
+        }
+
+        .rectangle-container {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 900px;
+            padding: 2rem;
+            text-align: center;
+            position: relative; /* To position the logout button */
+        }
+
+        .logout-container {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .logout-button {
+            background-color: #dc2626; /* Red color for logout */
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background-color: #b91c1c;
+        }
+
+        .rectangle-container img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rectangle-container h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .rectangle-container p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-link {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(139, 92, 246, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .main-button {
+            display: inline-block;
+            background: linear-gradient(to right, #8b5cf6, #d946ef);
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .main-button:hover {
+            background: linear-gradient(to right, #a78bfa, #f0abfc);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="rectangle-container">
+        <div class="logout-container">
+            <a href="description home page.html" class="logout-button">Logout</a>
+        </div>
+        <img src="C:\Users\ENOCK MAHORO\Desktop\34.JPG" alt="Meal Delivery">
+        <h1>Welcome to Online Meal Delivery Management</h1>
+        <p>This is my online meal delivery management page project! It provides access to various sections of food delivery.</p>
+        <nav class="nav-links">
+            <a href="feedback" target="_blank" class="nav-link">Feedback</a>
+            <a href="inventory" target="_blank" class="nav-link">Inventory</a>
+            <a href="menu item" target="_blank" class="nav-link">Menu Item</a>
+            <a href="notification" target="_blank" class="nav-link">Notification</a>
+            <a href="orders" target="_blank" class="nav-link">Orders</a>
+            <a href="payment" target="_blank" class="nav-link">Payment</a>
+            <a href="reservation" target="_blank" class="nav-link">Reservation</a>
+            <a href="restaurant_table" target="_blank" class="nav-link">Restaurant Table</a>
+            <a href="role" target="_blank" class="nav-link">Role</a>
+            <a href="user" target="_blank" class="nav-link">User</a>
+        </nav>
+
+    </div>
+
+    <script>
+        
+
+        const logoutButton = document.querySelector('.logout-button');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function(event) {
+                

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration & Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, #f0f2ff 0%, #e0e7ff 100%);
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+            opacity: 0.95;
+            transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+            opacity: 1;
+        }
+
+        .form-heading {
+            color: #6366f1;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            color: #4b5563;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .input-field:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+        }
+
+        .submit-button {
+            background: linear-gradient(to right, #8b5cf6, #d946ef);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 1.25rem 2.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(to right, #a78bfa, #f0abfc);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .switch-form-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #6366f1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .switch-form-link:hover {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #e11d48;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        #registration-form, #login-form {
+            display: none;
+        }
+
+        #registration-form.active, #login-form.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+    <div class="form-container">
+        <h2 class="form-heading" id="form-title">Register</h2>
+        <form id="registration-form" class="space-y-4 active">
+            <div class="input-group">
+                <label for="reg-name" class="input-label">Name:</label>
+                <input type="text" id="reg-name" class="input-field" placeholder="Enter your name" required>
+                <p id="reg-name-error" class="error-message"></p>
+            </div>
+            <div class="input-group">
+                <label for="reg-email" class="input-label">Email:</label>
+                <input type="email" id="reg-email" class="input-field" placeholder="Enter your email" required>
+                <p id="reg-email-error" class="error-message"></p>
+            </div>
+            <div class="input-group">
+                <label for="reg-password" class="input-label">Password:</label>
+                <input type="password" id="reg-password" class="input-field" placeholder="Enter your password" required>
+                <p id="reg-password-error" class="error-message"></p>
+            </div>
+            <button type="submit" class="submit-button">Register</button>
+            <a href="#" class="switch-form-link" id="switch-to-login">Already have an account? Login</a>
+        </form>
+
+        <form id="login-form" class="space-y-4">
+            <div class="input-group">
+                <label for="login-email" class="input-label">Email:</label>
+                <input type="email" id="login-email" class="input-field" placeholder="Enter your email" required>
+                <p id="login-email-error" class="error-message"></p>
+            </div>
+            <div class="input-group">
+                <label for="login-password" class="input-label">Password:</label>
+                <input type="password" id="login-password" class="input-field" placeholder="Enter your password" required>
+                <p id="login-password-error" class="error-message"></p>
+            </div>
+            <button type="submit" class="submit-button">Login</button>
+            <a href="description home page.html" class="switch-form-link" id="switch-to-register">If you don't have an account, go back to Register</a>
+        </form>
+    </div>
+
+    <script>
+        const registrationForm = document.getElementById('registration-form');
+        const loginForm = document.getElementById('login-form');
+        const switchToLoginLink = document.getElementById('switch-to-login');
+        const switchToRegisterLink = document.getElementById('switch-to-register');
+        const formTitle = document.getElementById('form-title');
+
+        switchToLoginLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            registrationForm.classList.remove('active');
+            loginForm.classList.add('active');
+            formTitle.textContent = 'Login';
+        });
+
+        switchToRegisterLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            loginForm.classList.remove('active');
+            registrationForm.classList.add('active');
+            formTitle.textContent = 'Register';
+        });
+
+        function validateForm(formId) {
+            const form = document.getElementById(formId);
+            const inputs = form.querySelectorAll('.input-field');
+            const errorMessages = form.querySelectorAll('.error-message');
+            let isValid = true;
+
+            inputs.forEach((input, index) => {
+                const errorMessage = errorMessages[index];
+                errorMessage.style.display = 'none';
+
+                if (!input.value.trim()) {
+                    errorMessage.textContent = `${input.previousElementSibling.textContent.slice(0, -1)} is required`;
+                    errorMessage.style.display = 'block';
+                    isValid = false;
+                } else if (input.type === 'email' && !isValidEmail(input.value.trim())) {
+                    errorMessage.textContent = 'Invalid email format';
+                    errorMessage.style.display = 'block';
+                    isValid = false;
+                } else if (input.type === 'password' && input.value.trim().length < 8) {
+                    errorMessage.textContent = 'Password must be at least 8 characters';
+                    errorMessage.style.display = 'block';
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+            return emailRegex.test(email);
+        }
+
+        registrationForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (validateForm('registration-form')) {
+                alert('Registration successful!');
+                registrationForm.reset();
+                loginForm.classList.add('active');
+                registrationForm.classList.remove('active');
+                formTitle.textContent = 'Login';
+            }
+        });
+
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (validateForm('login-form')) {
+                alert('Login successful!');
+                loginForm.reset();
+                window.location.href = "project home page.html"; // Redirect on successful login
+            }
+        });
+    </script>
+</body>
+</html>
